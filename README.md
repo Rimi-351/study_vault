@@ -1,30 +1,22 @@
 graph TD
-    subgraph "UI Layer (View)"
-        style UI fill:#e8f5e9,stroke:#43a047,stroke-width:2px
-        A[ChatScreen.dart] --> B[MessageBubble.dart]
-        A --> C[ChatInputArea.dart]
-        A --> D[ChatDrawer.dart]
+    subgraph "Presentation Layer (UI)"
+        style Presentation Layer fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+        User((User)) -->|Interacts| View[ChatScreen.dart]
+        View -->|Events (Tap, Scroll)| ViewModel[_ChatScreenState]
+        ViewModel -->|Updates State| View
     end
 
-    subgraph "Presentation Layer (Logic)"
-        style Logic fill:#e3f2fd,stroke:#1e88e5,stroke-width:2px
-        A -- "User Input" --> E[_ChatScreenState]
-        E -- "Updates UI" --> A
-        E[Controller Logic] 
+    subgraph "Domain Layer (Business Logic)"
+        style Domain Layer fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+        ViewModel -->|Calls| ExtractService[FileExtractorService]
+        ViewModel -->|Calls| AIService[GeminiService]
+        ViewModel -->|Calls| PDFService[ChatPdfService]
     end
 
-    subgraph "Data Layer (Services)"
-        style Data fill:#f3e5f5,stroke:#8e24aa,stroke-width:2px
-        E -- "Calls" --> F[GeminiService]
-        E -- "Calls" --> G[FileExtractorService]
-        E -- "Calls" --> H[ChatPdfService]
-        E -- "Save/Load" --> I[ChatRepository]
-    end
-
-    subgraph "External Sources"
-        style Ext fill:#fff3e0,stroke:#fb8c00,stroke-width:2px
-        F -- "API" --> J[Google Gemini AI]
-        G -- "API" --> K[Cloudmersive / ML Kit]
-        I -- "Cloud" --> L[Firebase Firestore]
-        H -- "Local" --> M[File System / PDF]
+    subgraph "Data Layer (External & Storage)"
+        style Data Layer fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+        AIService -->|API Request| GoogleGemini[Google AI API]
+        ExtractService -->|File I/O| LocalStorage[Phone Storage]
+        ExtractService -->|API Request| Cloudmersive[Cloudmersive API]
+        ViewModel -->|Read/Write| Firestore[Firebase Firestore]
     end
