@@ -1,22 +1,56 @@
 graph TD
-    subgraph "Presentation Layer (UI)"
-        style Presentation Layer fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
-        User((User)) -->|Interacts| View[ChatScreen.dart]
-        View -->|Events (Tap, Scroll)| ViewModel[_ChatScreenState]
-        ViewModel -->|Updates State| View
+    %% --- STYLING (The Colors) ---
+    classDef ui fill:#dcfce7,stroke:#166534,stroke-width:2px,color:#14532d;
+    classDef logic fill:#dbeafe,stroke:#1e40af,stroke-width:2px,color:#1e3a8a;
+    classDef service fill:#f3e8ff,stroke:#6b21a8,stroke-width:2px,color:#581c87;
+    classDef data fill:#ffedd5,stroke:#c2410c,stroke-width:2px,color:#7c2d12;
+
+    %% --- NODES & LAYERS ---
+    subgraph "UI Layer (View)"
+        direction TB
+        A[ChatScreen.dart]:::ui
+        B[MessageBubble.dart]:::ui
+        C[ChatInputArea.dart]:::ui
+        D[ChatDrawer.dart]:::ui
+    end
+
+    subgraph "Presentation Layer (ViewModel)"
+        direction TB
+        E[_ChatScreenState]:::logic
+        note[("Manages State: _messages, _isTyping")]:::logic
     end
 
     subgraph "Domain Layer (Business Logic)"
-        style Domain Layer fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-        ViewModel -->|Calls| ExtractService[FileExtractorService]
-        ViewModel -->|Calls| AIService[GeminiService]
-        ViewModel -->|Calls| PDFService[ChatPdfService]
+        direction TB
+        F[GeminiService]:::service
+        G[FileExtractorService]:::service
+        H[ChatPdfService]:::service
     end
 
-    subgraph "Data Layer (External & Storage)"
-        style Data Layer fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
-        AIService -->|API Request| GoogleGemini[Google AI API]
-        ExtractService -->|File I/O| LocalStorage[Phone Storage]
-        ExtractService -->|API Request| Cloudmersive[Cloudmersive API]
-        ViewModel -->|Read/Write| Firestore[Firebase Firestore]
+    subgraph "Data Layer (External)"
+        direction TB
+        I[Google Gemini API]:::data
+        J[Cloudmersive API]:::data
+        K[Google ML Kit (OCR)]:::data
+        L[Firebase Firestore]:::data
+        M[Local File System]:::data
     end
+
+    %% --- CONNECTIONS ---
+    A -->|Builds| B
+    A -->|Builds| C
+    A -->|Builds| D
+    
+    A -->|User Action| E
+    E -->|Updates| A
+    E -.- note
+
+    E -->|Requests| F
+    E -->|Requests| G
+    E -->|Requests| H
+
+    F -->|Http| I
+    G -->|Http| J
+    G -->|Native| K
+    G -->|I/O| M
+    E -->|Read/Write| L
