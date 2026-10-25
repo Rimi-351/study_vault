@@ -1,0 +1,195 @@
+I want to build a mobile app named studyVault using free AI support andfully latest(compatiable version)
+Type: Android 
+Language: Flutter(Dart)
+IDE: Visual Studio code
+
+Features of App:
+1)Read various type of file like pdf, docs, ppt
+2)AI Chatbot(Question answer, summarization, chat history, media history)
+3)Have text extraction option
+4)write(Create or generate new) files to store result and share-able in WhatsApp as attachment(pdf).
+5)download these fiiles and saved in phone storage .
+
+It will like text extractor.
+It will read any type of file like PDF,PPT,DOCS, text file.
+It will read the whole file and extract only text (as file may contain images,figures, etc) 
+It should be able to read multiple files
+after reading file it will create a file containing only texts and save it into app
+on that saved file it will perform operations like
+1)Summarization
+2)Generate questions and solve answers
+for example I upload a file (sometime just tell topic name) , told app to give 30+ mcq on this
+it should create a file (maybe pdf, docs,txt) which is downloadable and sharable to WhatsApp
+
+
+These will also be saved in app .As a result whenever a student want ,he can see this previous operation/activity from app (like history)
+i want firebase authentication api integration
+give from scratch file hierarchy with file type what to create empty basic activity or not
+
+
+Give me a proper roadmap
+- Required elements like which API, Database etc will needed for what
+- then give me short idea why this one is currently best and  do n don't(what things should i    
+  do for building this app and what shouldn't I do)
+- best tools like which version of android studio should i choose for this project and others 
+  combination for best output of this app, Which design pattern like MVVM like a complete     
+  guide line
+- folder structure
+- setup idea
+- codes and rest of required part
+ 
+
+i want to make my  chatbot screen like urs
+
+for example:
+
+Whenever I give large text input there will be minimize portion showing.there will be collapse or expand text option
+
+When I upload file it will attached with text box for text command without presing send button it won't upload/run command
+
+it will have chat history
+
+
+
+
+new chat Option like yours
+i want to add a focus mode option here
+focus mode is a option that will enable me to disable multiple apps running in my phone
+i can disable/mute app for various time range(like minutes/hours/days) set limit like i can use app (minutes/hours per day)
+there is in built option in phone( setting-->digital well being-->app screen time-->set timer)
+here we had to do it manually one by one
+no single interface to set timer for multiple apps
+i wanna create this functionality
+it will also count my screen time on this app
+what is my current timer or on this day for which time the app is disabled for, how many times i tried to open the app
+
+study_vault/
+├── android/                          # Android specific files
+│   ├── app/
+│   │   ├── src/
+│   │   │   └── main/
+│   │   │       ├── kotlin/
+│   │   │       │   └── com/
+│   │   │       │       └── example/
+│   │   │       │           └── study_vault/
+│   │   │       │               └── MainActivity.kt
+│   │   │       ├── res/
+│   │   │       │   └── values/
+│   │   │       │       └── styles.xml
+│   │   │       └── AndroidManifest.xml          # ✅ You have this
+│   │   └── google-services.json                 # Firebase config
+│   └── build.gradle
+├── ios/                              # iOS specific files
+│   ├── Runner/
+│   │   ├── Assets.xcassets/
+│   │   │   └── AppIcon.appiconset/
+│   │   ├── Base.lproj/
+│   │   │   └── LaunchScreen.storyboard
+│   │   └── Info.plist
+│   └── Podfile
+├── assets/                           # App assets
+│   └── icon/
+│       └── icon.png                  # ✅ Your 1024x1024 app icon
+├── lib/                              # Main Dart code
+│   ├── main.dart                     # App entry point
+│   ├── features/                     # Feature-based architecture
+│   │   ├── auth/                     # Authentication feature
+│   │   │   ├── presentation/
+│   │   │   │   ├── screens/
+│   │   │   │   │   ├── login_screen.dart
+│   │   │   │   │   └── register_screen.dart
+│   │   │   │   └── widgets/
+│   │   │   │       └── auth_form_widget.dart
+│   │   │   └── domain/
+│   │   │       └── repositories/
+│   │   │           └── auth_repository.dart
+│   │   ├── generate/                 # ✅ Your Generate feature
+│   │   │   └── presentation/
+│   │   │       └── generate_screen.dart    # ✅ You have this
+│   │   └── history/                  # History feature
+│   │       └── presentation/
+│   │           └── history_screen.dart
+│   ├── shared/                       # Shared resources
+│   │   ├── models/                   # Data models
+│   │   │   └── file_model.dart       # ✅ You have this
+│   │   ├── services/                 # Business logic services
+│   │   │   ├── file_extractor_service.dart    # ✅ You have this
+│   │   │   ├── gemini_service.dart            # ✅ You have this
+│   │   │   ├── file_upload_service.dart       # ✅ You have this
+│   │   │   └── firebase_service.dart
+|   |    |   |___ local_file_service.dart
+│   │   ├── widgets/                  # Reusable widgets
+│   │   │   └── file_picker_widget.dart        # ✅ You have this
+│   │   └── utils/                    # Utilities
+│   │       ├── constants.dart
+│   │       └── helpers.dart
+│   └── core/                         # Core app functionality
+│       ├── app/
+│       │   └── app.dart
+│       ├── theme/
+│       │   └── app_theme.dart
+│       └── routing/
+│           └── app_router.dart
+├── web/                              # Web specific files (if needed)
+│   └── index.html
+├── test/                             # Test files
+│   └── widget_test.dart
+├── pubspec.yaml                      # ✅ You have this - Dependencies & config
+├── analysis_options.yaml             # Lint rules
+├── README.md                         # Project documentation
+├── .gitignore                        # Git ignore rules
+├── .metadata                         # IDE metadata
+└── pubspec.lock                      # Auto-generated lock file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+├── lib/                              # Main Dart code
+│   ├── main.dart                     # App entry point
+│   ├── features/                     # Feature-based architecture
+│   │   ├── auth/                     # Authentication feature
+│   │   │   └── presentation/
+│   │   │       └── login_screen.dart    
+│   │   │       └── splash_screen.dart  
+│   │   ├── generate/                     # Authentication feature
+│   │   │   └── presentation/
+│   │   │       └── generate_screen.dart  
+│   │   ├── home/                     # Authentication feature
+│   │   │   └── presentation/
+│   │   │       └── home_screen.dart 
+│   │   ├── chat/   
+│   │   │   └── presentation/
+│   │   │       └── screen
+│   │   │           └── chatScreen.dart 
+│   │   │       └── widget
+│   │   │           └── chatDrawer.dart  
+│   │   │           └── chat_input_area.dart 
+│   │   │           └── code_block.dart 
+│   │   │           └── message_bubble.dart 
+│   │   │       └── services
+│   │   │           └── chat_pd_service.dart               
+│   ├── shared/                       # Shared resources
+│   │   ├── models/                   # Data models
+│   │   │   └── file_model.dart       # ✅ You have this
+│   │   ├── services/                 # Business logic services
+│   │   │   ├── file_extractor_service.dart    # ✅ You have this
+│   │   │   ├── gemini_service.dart            # ✅ You have this
+
+
+
+

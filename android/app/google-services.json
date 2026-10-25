@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "216802039417",
+    "project_id": "studyvault-ade73",
+    "storage_bucket": "studyvault-ade73.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216802039417:android:2ca852820ad1e8665026a8",
+        "android_client_info": {
+          "package_name": "com.example.study_vault"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "216802039417-qnmbji4t7n1cp6m8evce8nv6tgbdbiuh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMThSb4po1LeyE0IzwRh12b_LjrzIcQHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "216802039417-qnmbji4t7n1cp6m8evce8nv6tgbdbiuh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

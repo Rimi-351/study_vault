@@ -1,0 +1,19 @@
+# analysis_options.yaml – CLEAN & PROFESSIONAL 2025
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # ─── MOST ANNOYING ONES THAT YOU DON'T WANT IN A WORKING APP ───
+    - avoid_print: false                  # We use print() for quick debug
+    - use_build_context_synchronously: false  # Normal in auth flows
+    - unused_import: false                # ← THIS REMOVES THE YELLOW WARNINGS YOU HATE
+    - prefer_const_constructors: false
+    - prefer_const_literals_to_create_immutables: false
+
+    # Keep the useful ones ON
+    - always_specify_types: false
+    - unnecessary_null_comparison: true
+    - avoid_relative_lib_imports: true
+    - prefer_single_quotes: true
+
+
